@@ -101,6 +101,10 @@ namespace BandTracker
         foundVenue.Delete();
         return View["success.cshtml"];
       };
+      Delete["venues/delete_all"] = _ => {
+        Venue.DeleteAll();
+        return View["success.cshtml"];
+      };
     }
   }
 }
