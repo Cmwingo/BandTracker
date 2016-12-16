@@ -26,14 +26,14 @@
       <option value='@venue.GetId()'>@venue.GetName()</option>
     }
   </select>
-  <button type='submit'>Add</button>
+  <button type='submit' class="light-button">Add</button>
 </form>
 <hr>
 <h4><a href="/bands/update/@Model["band"].GetId()">Update this band</a></h4>
 
 <form action="/band/delete/@Model["band"].GetId()" method="post">
   <input type="hidden" name="_method" value="DELETE">
-  <button type="submit">Delete</button>
+  <button type="submit" class="light-button">Delete</button>
 </form>
 <br>
 <p><a class="btn-sm btn-primary" href="/">Return to Main Page</a></p>
