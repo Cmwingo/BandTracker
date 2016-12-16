@@ -2,12 +2,11 @@
   Layout="Shared/_Layout.cshtml";
 }
 
-<h1>Band Tracker</h1>
 <h2>Venue: @Model["venue"].GetName()</h2>
 <hr />
 @if (@Model["venueBands"].Count != 0)
 {
-  <h4>This venue has these bands:</h4>
+  <h4>This venue has hosted these bands:</h4>
   <ul>
     @foreach (var band in @Model["venueBands"])
     {
@@ -31,7 +30,7 @@
   </form>
   <form action="/venue/delete/@Model["venue"].GetId()" method="post">
     <input type="hidden" name="_method" value="DELETE">
-    <button type="submit">Delete</button>
+    <button type="submit" class="btn-danger">Delete</button>
   </form>
   <br>
   <p><a class="btn-sm btn-primary" href="/">Return to Main Page</a></p>

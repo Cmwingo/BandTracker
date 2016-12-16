@@ -5,3 +5,29 @@
 li {
   padding-top: 10px;
 }
+
+body {
+  font-family: 'New Rocker', cursive;
+  background-color: black;
+  color: lightgray;
+}
+
+.centered {
+  text-align: center;
+}
+
+.header {
+  height: 200px;
+  background-image: url("../img/guitar.jpg");
+  background-size: contain;
+}
+
+#title {
+  color: lightgray;
+  padding-top: 70px;
+  text-shadow: 2px 2px darkgray;
+}
+
+a {
+  color: #6195e8;
+}

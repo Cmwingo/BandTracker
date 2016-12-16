@@ -1,11 +1,23 @@
-@{
-  Layout="Shared/_Layout.cshtml";
-}
-
-<h3>@Model.GetName()</h3>
-
-<form action="/bands/update/@Model.GetId()" method="post">
-  <input name='_method' type='hidden' value='PATCH'>
-  <input type="text" name="new-description" placeholder="Enter new Name:" required>
-  <button type="submit" name="button">Submit</button>
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=New+Rocker" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/css/bootstrap.css">
+    <link rel="stylesheet" href="../../Content/css/styles.css">
+    <title>Band Tracker</title>
+  </head>
+  <div class="header">
+    <h1 class="centered" id="title">Band Tracker</h1>
+  </div>
+  <body>
+    <h3>@Model.GetName()</h3>
+    <form action="/bands/update/@Model.GetId()" method="post">
+      <input name='_method' type='hidden' value='PATCH'>
+      <input type="text" name="new-description" placeholder="Enter new Name:" required>
+      <button type="submit" name="button">Submit</button>
+    </form>
+    <br>
+    <p><a class="btn-sm btn-primary" href="/">Return to Main Page</a></p>
+  </body>
+</html>
