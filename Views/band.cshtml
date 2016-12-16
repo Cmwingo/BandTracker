@@ -7,13 +7,12 @@
 <hr />
 @if (@Model["bandVenues"].Count != 0)
 {
-  <h4>Here are all the venues in this band:</h4>
+  <h4>Here are all the venues this band has played:</h4>
   <ul>
     @foreach (var venue in @Model["bandVenues"])
     {
       <li><a href='/venues/@venue.GetId()'>@venue.GetName()</a>
         <a class="leftmargin btn-sm btn-success" href="/venues/update/@venue.GetId()">Update</a>
-        <a class="leftmargin btn-sm btn-danger" href="/venues/delete/@venue.GetId()">Delete</a>
       </li>
     }
   </ul>
@@ -37,5 +36,5 @@
   <input type="hidden" name="_method" value="DELETE">
   <button type="submit">Delete</button>
 </form>
-
+<br>
 <p><a class="btn-sm btn-primary" href="/">Return to Main Page</a></p>

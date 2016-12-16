@@ -236,39 +236,17 @@ namespace BandTracker
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
-      List<int> venueIds = new List<int> {};
+      List<Venue> venues = new List<Venue> {};
       while(rdr.Read())
       {
         int venueId = rdr.GetInt32(0);
-        venueIds.Add(venueId);
+        string venueDescription = rdr.GetString(1);
+        Venue foundVenue = new Venue(venueDescription, venueId);
+        venues.Add(foundVenue);
       }
       if (rdr!=null)
       {
         rdr.Close();
-      }
-
-      List<Venue> venues = new List<Venue> {};
-      foreach (int venueId in venueIds)
-      {
-        SqlCommand venueQuery = new SqlCommand("SELECT * FROM venues WHERE id = @VenueId;", conn);
-
-        SqlParameter venueIdParameter = new SqlParameter();
-        venueIdParameter.ParameterName = "@VenueId";
-        venueIdParameter.Value = venueId;
-        venueQuery.Parameters.Add(venueIdParameter);
-
-        SqlDataReader queryReader = venueQuery.ExecuteReader();
-        while(queryReader.Read())
-        {
-          int thisVenueId = queryReader.GetInt32(0);
-          string venueDescription = queryReader.GetString(1);
-          Venue foundVenue = new Venue(venueDescription, thisVenueId);
-          venues.Add(foundVenue);
-        }
-        if(queryReader!=null)
-        {
-          queryReader.Close();
-        }
       }
       if(conn!=null)
       {
