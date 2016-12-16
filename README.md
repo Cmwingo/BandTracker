@@ -1,4 +1,4 @@
-# _Hair Salon_
+# _Band Tracker_
 
 #### _A Nancy web app utilizing ADO .NET to create an interface for a user to keep track of bands and venues_
 
@@ -6,7 +6,7 @@
 
 ## Description
 
-_This program will allow the user to enter in information about a venue. It will also allow the user to enter bands for that venue. The user can edit the details of the venues as well as delete individual venues._
+_This program will allow the user to enter in information about a venue. It will also allow the user to associate venues with bands and vice versa. The user can edit the details of the venues as well as delete individual venues._
 
 ## Specs
 
