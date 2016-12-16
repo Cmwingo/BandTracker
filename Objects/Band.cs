@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System;
+using System.Globalization;
+using System.Threading;
+
 
 namespace BandTracker
 {
@@ -42,6 +45,15 @@ namespace BandTracker
     {
       _name = newName;
     }
+
+    public string ForceCapital(string lowercaseString)
+    {
+      CultureInfo cultureInfo   = Thread.CurrentThread.CurrentCulture;
+      TextInfo textInfo = cultureInfo.TextInfo;
+      string upppercaseString = textInfo.ToTitleCase(lowercaseString);
+      return upppercaseString;
+    }
+
     public static List<Band> GetAll()
     {
       List<Band> allBands = new List<Band>{};

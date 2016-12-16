@@ -24,6 +24,7 @@ namespace BandTracker
       Post["/venues/new"] = _ => {
         Venue newVenue = new Venue(Request.Form["venue-description"]);
         newVenue.Save();
+        newVenue.Update(newVenue.ForceCapital(newVenue.GetName()));
         return View["success.cshtml"];
       };
       Get["/bands/new"] = _ => {
@@ -32,6 +33,7 @@ namespace BandTracker
       Post["/bands/new"] = _ => {
         Band newBand = new Band(Request.Form["band-name"]);
         newBand.Save();
+        newBand.Update(newBand.ForceCapital(newBand.GetName()));
         return View["success.cshtml"];
       };
       Get["venues/{id}"] = parameters => {
