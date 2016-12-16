@@ -1,4 +1,4 @@
-/*using Nancy;
+using Nancy;
 using System.Collections.Generic;
 
 namespace BandTracker
@@ -10,98 +10,97 @@ namespace BandTracker
       Get["/"] = _ => {
       return View["index.cshtml"];
       };
-      Get["/object2s"] = _ => {
-        List<Object2> AllObject2s = Object2.GetAll();
-        return View["object2s.cshtml", AllObject2s];
+      Get["/venues"] = _ => {
+        List<Venue> AllVenues = Venue.GetAll();
+        return View["venues.cshtml", AllVenues];
       };
-      Get["/object1s"] = _ => {
-        List<Object1> AllObject1s = Object1.GetAll();
-        return View["object1s.cshtml", AllObject1s];
+      Get["/bands"] = _ => {
+        List<Band> AllBands = Band.GetAll();
+        return View["bands.cshtml", AllBands];
       };
-      Get["/object2s/new"] = _ => {
-      return View["object2s_form.cshtml"];
+      Get["/venues/new"] = _ => {
+      return View["venues_form.cshtml"];
       };
-      Post["/object2s/new"] = _ => {
-        Object2 newObject2 = new Object2(Request.Form["object2-description"]);
-        newObject2.Save();
+      Post["/venues/new"] = _ => {
+        Venue newVenue = new Venue(Request.Form["venue-description"]);
+        newVenue.Save();
         return View["success.cshtml"];
       };
-      Get["/object1s/new"] = _ => {
-        return View["object1s_form.cshtml"];
+      Get["/bands/new"] = _ => {
+        return View["bands_form.cshtml"];
       };
-      Post["/object1s/new"] = _ => {
-        Object1 newObject1 = new Object1(Request.Form["object1-name"]);
-        newObject1.Save();
+      Post["/bands/new"] = _ => {
+        Band newBand = new Band(Request.Form["band-name"]);
+        newBand.Save();
         return View["success.cshtml"];
       };
-      Get["object2s/{id}"] = parameters => {
+      Get["venues/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        Object2 SelectedObject2 = Object2.Find(parameters.id);
-        List<Object1> Object2Object1s = SelectedObject2.GetObject1s();
-        List<Object1> AllObject1s = Object1.GetAll();
-        model.Add("object2", SelectedObject2);
-        model.Add("object2Object1s", Object2Object1s);
-        model.Add("allObject1s", AllObject1s);
-        return View["object2.cshtml", model];
+        Venue SelectedVenue = Venue.Find(parameters.id);
+        List<Band> VenueBands = SelectedVenue.GetBands();
+        List<Band> AllBands = Band.GetAll();
+        model.Add("venue", SelectedVenue);
+        model.Add("venueBands", VenueBands);
+        model.Add("allBands", AllBands);
+        return View["venue.cshtml", model];
       };
 
-      Get["object1s/{id}"] = parameters => {
+      Get["bands/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        Object1 SelectedObject1 = Object1.Find(parameters.id);
-        List<Object2> Object1Object2s = SelectedObject1.GetObject2s();
-        List<Object2> AllObject2s = Object2.GetAll();
-        model.Add("object1", SelectedObject1);
-        model.Add("object1Object2s", Object1Object2s);
-        model.Add("allObject2s", AllObject2s);
-        return View["object1.cshtml", model];
+        Band SelectedBand = Band.Find(parameters.id);
+        List<Venue> BandVenues = SelectedBand.GetVenues();
+        List<Venue> AllVenues = Venue.GetAll();
+        model.Add("band", SelectedBand);
+        model.Add("bandVenues", BandVenues);
+        model.Add("allVenues", AllVenues);
+        return View["band.cshtml", model];
       };
-      Post["object2/add_object1"] = _ => {
-        Object1 object1 = Object1.Find(Request.Form["object1-id"]);
-        Object2 object2 = Object2.Find(Request.Form["object2-id"]);
-        object2.AddObject1(object1);
+      Post["venue/add_band"] = _ => {
+        Band band = Band.Find(Request.Form["band-id"]);
+        Venue venue = Venue.Find(Request.Form["venue-id"]);
+        venue.AddBand(band);
         return View["success.cshtml"];
       };
-      Post["object1/add_object2"] = _ => {
-        Object1 object1 = Object1.Find(Request.Form["object1-id"]);
-        Object2 object2 = Object2.Find(Request.Form["object2-id"]);
-        object1.AddObject2(object2);
+      Post["band/add_venue"] = _ => {
+        Band band = Band.Find(Request.Form["band-id"]);
+        Venue venue = Venue.Find(Request.Form["venue-id"]);
+        band.AddVenue(venue);
         return View["success.cshtml"];
       };
-      Get["object2s/update/{id}"] = parameters =>
+      Get["venues/update/{id}"] = parameters =>
       {
-        Object2 foundObject2 = Object2.Find(parameters.id);
-        return View["object2_update.cshtml", foundObject2];
+        Venue foundVenue = Venue.Find(parameters.id);
+        return View["venue_update.cshtml", foundVenue];
       };
-      Patch["object2s/update/{id}"] = parameters =>
+      Patch["venues/update/{id}"] = parameters =>
       {
-        Object2 foundObject2 = Object2.Find(parameters.id);
-        foundObject2.Update(Request.Form["new-description"]);
+        Venue foundVenue = Venue.Find(parameters.id);
+        foundVenue.Update(Request.Form["new-description"]);
         return View["success.cshtml"];
       };
-      Get["object1s/update/{id}"] = parameters =>
+      Get["bands/update/{id}"] = parameters =>
       {
-        Object1 foundObject1 = Object1.Find(parameters.id);
-        return View["object1_update.cshtml", foundObject1];
+        Band foundBand = Band.Find(parameters.id);
+        return View["band_update.cshtml", foundBand];
       };
-      Patch["object1s/update/{id}"] = parameters =>
+      Patch["bands/update/{id}"] = parameters =>
       {
-        Object1 foundObject1 = Object1.Find(parameters.id);
-        foundObject1.Update(Request.Form["new-description"]);
+        Band foundBand = Band.Find(parameters.id);
+        foundBand.Update(Request.Form["new-description"]);
         return View["success.cshtml"];
       };
-      Delete["object1/delete/{id}"] = parameters =>
+      Delete["band/delete/{id}"] = parameters =>
       {
-        Object1 foundObject1 = Object1.Find(parameters.id);
-        foundObject1.Delete();
+        Band foundBand = Band.Find(parameters.id);
+        foundBand.Delete();
         return View["success.cshtml"];
       };
-      Delete["object2/delete/{id}"] = parameters =>
+      Delete["venue/delete/{id}"] = parameters =>
       {
-        Object2 foundObject2 = Object2.Find(parameters.id);
-        foundObject2.Delete();
+        Venue foundVenue = Venue.Find(parameters.id);
+        foundVenue.Delete();
         return View["success.cshtml"];
       };
     }
   }
 }
-*/

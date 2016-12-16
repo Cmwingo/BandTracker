@@ -1,0 +1,13 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h1>Band Tracker</h1>
+<h2>Add new band</h2>
+<hr />
+<form action="/bands/new" method="post">
+  <label for="band-name">Band name:</label>
+  <input id="band-name" name="band-name" type="text">
+  <button type="submit">Add</button>
+</form>
+<h4><a href="/">Return home</a></h4>
