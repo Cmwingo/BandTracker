@@ -1,7 +1,7 @@
-using Nancy;
+/*using Nancy;
 using System.Collections.Generic;
 
-namespace Template
+namespace BandTracker
 {
   public class HomeModule : NancyModule
   {
@@ -104,3 +104,4 @@ namespace Template
     }
   }
 }
+*/

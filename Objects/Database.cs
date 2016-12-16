@@ -1,7 +1,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Template
+namespace BandTracker
 {
   public class DB
   {

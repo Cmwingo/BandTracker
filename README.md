@@ -1,14 +1,15 @@
 # _Hair Salon_
 
-#### _A Nancy web app utilizing ADO .NET to create an interface for a user to keep track of concert venues and the bands playing there_
+#### _A Nancy web app utilizing ADO .NET to create an interface for a user to keep track of bands and venues_
 
 #### By _**Chris Wingo**_
 
 ## Description
 
-_This program will allow the user to enter in information about a venue. It will also allow the user to enter bands for that venue. The user can edit the details of venue as well as delete a venue they no longer want._
+_This program will allow the user to enter in information about a venue. It will also allow the user to enter bands for that venue. The user can edit the details of the venues as well as delete individual venues._
 
 ## Specs
+
 | Behavior - Plain English | Sample Input                                                                                                                                   | Sample Output                                                | Descriptive Sentence                                                                           |
 |--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------------------------------------|
 | Saves a venue            | new Venue("Crystal Ballroom") CrystalBallroom.Save()                                                                                           | All Venues: Crystal Ballroom                                 | Creates one venue and checks to make sure it was added to the list of all venues               |
@@ -33,7 +34,7 @@ In SQLCMD:<br>
 \>GO <br>
 \>CREATE TABLE bands (id INT IDENTITY(1,1), name VARCHAR(255)); <br>
 \>CREATE TABLE venues (id INT IDENTITY(1,1), name VARCHAR(255)); <br>
-\>CREATE TABLE bands_venues (id INT IDENTITY(1,1), band_id INT, venue_id INT);
+\>CREATE TABLE bands_venues (id INT IDENTITY(1,1), band_id INT, venue_id INT); <br>
 \>GO
 \>QUIT
 
